@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Screening Record</title>
+
+    <link rel="stylesheet" href="../css/screening_record.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Left Panel -->
+    <div class="left-panel">
+
+        <img src="../images/screening.png" alt="Screening">
+
+        <h2>Eye Screening</h2>
+
+        <p>
+            Record diabetic retinopathy screening results,
+            recommendations and upload patient reports.
+        </p>
+
+    </div>
+
+    <!-- Right Panel -->
+    <div class="right-panel">
+
+        <h1>
+            <i class="fa-solid fa-eye"></i>
+            Screening Record
+        </h1>
+
+        <form id="screeningForm">
+
+            <div class="input-group">
+
+                <label>Appointment ID</label>
+                <input type="number"
+                id="appointment_id"
+                placeholder="Enter Appointment ID"
+                required>
+
+            </div>
+
+            <div class="input-group">
+
+                <label>Patient Name</label>
+
+                <input type="text"
+                id="patient_name"
+                placeholder="Patient Name"
+                readonly>
+
+            </div>
+
+            <div class="row">
+
+                <div class="input-group">
+
+                    <label>Screening Date</label>
+
+                    <input type="date"
+                    id="screening_date"
+                    required>
+
+                </div>
+
+                <div class="input-group">
+
+                    <label>Result</label>
+
+                    <select id="result" required>
+
+                        <option value="">Select Result</option>
+                        <option>Normal</option>
+                        <option>Mild DR</option>
+                        <option>Moderate DR</option>
+                        <option>Severe DR</option>
+                        <option>Proliferative DR</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+            <div class="input-group">
+
+                <label>Recommendations</label>
+
+                <textarea
+                id="recommendations"
+                rows="4"
+                placeholder="Enter recommendations"></textarea>
+
+            </div>
+
+            <div class="input-group">
+
+                <label>Upload Report</label>
+
+                <input type="file"
+                id="report">
+
+            </div>
+
+            <button type="submit">
+
+                <i class="fa-solid fa-floppy-disk"></i>
+
+                Save Screening Record
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>
