@@ -45,28 +45,18 @@ body{
     color:white;
 }
 
-.badge-normal{
-    background:#22C55E;
-}
-
-.badge-mild{
-    background:#F59E0B;
-}
-
-.badge-moderate{
-    background:#F97316;
-}
-
-.badge-severe{
-    background:#EF4444;
-}
-
 .status-completed{
     background:#14B8A6;
 }
 
 .status-pending{
     background:#F59E0B;
+}
+
+.summary-card{
+    border:none;
+    border-radius:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.08);
 }
 
 </style>
@@ -98,17 +88,18 @@ body{
 
 <div class="col-md-8">
 <input type="text"
+id="searchInput"
 class="form-control search-box"
-placeholder="🔍 Search by date or result...">
+placeholder="🔍 Search by clinic or result...">
 </div>
 
 <div class="col-md-4">
-<select class="form-select search-box">
-<option>All Results</option>
-<option>Normal</option>
-<option>Mild Retinopathy</option>
-<option>Moderate Retinopathy</option>
-<option>Severe Retinopathy</option>
+<select id="filterResult" class="form-select search-box">
+<option value="">All Results</option>
+<option value="Normal">Normal</option>
+<option value="Mild Retinopathy">Mild Retinopathy</option>
+<option value="Moderate Retinopathy">Moderate Retinopathy</option>
+<option value="Severe Retinopathy">Severe Retinopathy</option>
 </select>
 </div>
 
@@ -121,82 +112,20 @@ placeholder="🔍 Search by date or result...">
 
 <thead>
 <tr>
-<th>Appointment ID</th>
 <th>Date</th>
 <th>Clinic</th>
 <th>Result</th>
-<th>Doctor Notes</th>
+<th>Recommendations</th>
 <th>Status</th>
 </tr>
 </thead>
 
-<tbody>
+<tbody id="historyTable">
 
 <tr>
-<td>#APT101</td>
-<td>15 June 2026</td>
-<td>City Eye Clinic</td>
-<td>
-<span class="badge badge-normal">
-Normal
-</span>
-</td>
-<td>No abnormality detected.</td>
-<td>
-<span class="badge status-completed">
-Completed
-</span>
-</td>
-</tr>
-
-<tr>
-<td>#APT102</td>
-<td>10 May 2026</td>
-<td>Vision Care Centre</td>
-<td>
-<span class="badge badge-mild">
-Mild Retinopathy
-</span>
-</td>
-<td>Annual follow-up recommended.</td>
-<td>
-<span class="badge status-completed">
-Completed
-</span>
-</td>
-</tr>
-
-<tr>
-<td>#APT103</td>
-<td>05 April 2026</td>
-<td>Apollo Hospital</td>
-<td>
-<span class="badge badge-moderate">
-Moderate Retinopathy
-</span>
-</td>
-<td>Further examination advised.</td>
-<td>
-<span class="badge status-completed">
-Completed
-</span>
-</td>
-</tr>
-
-<tr>
-<td>#APT104</td>
-<td>28 June 2026</td>
-<td>City Eye Clinic</td>
-<td>
-<span class="badge badge-severe">
-Pending Screening
-</span>
-</td>
-<td>Appointment scheduled.</td>
-<td>
-<span class="badge status-pending">
-Pending
-</span>
+<td colspan="5" class="text-center py-4">
+<div class="spinner-border text-success" role="status"></div>
+<div class="mt-2">Loading history...</div>
 </td>
 </tr>
 
@@ -209,39 +138,42 @@ Pending
 
 <div class="row mt-5 text-center">
 
-<div class="col-md-3">
-<div class="card border-0 shadow-sm rounded-4 p-3">
-<h5 class="text-success">Normal</h5>
-<h2>12</h2>
+<div class="col-md-3 mb-3">
+<div class="card summary-card p-3">
+<h6 class="text-muted">Total Visits</h6>
+<h2 id="totalVisits" class="text-success">0</h2>
 </div>
 </div>
 
-<div class="col-md-3">
-<div class="card border-0 shadow-sm rounded-4 p-3">
-<h5 class="text-warning">Mild</h5>
-<h2>5</h2>
+<div class="col-md-3 mb-3">
+<div class="card summary-card p-3">
+<h6 class="text-muted">Completed</h6>
+<h2 id="completedCount" class="text-success">0</h2>
 </div>
 </div>
 
-<div class="col-md-3">
-<div class="card border-0 shadow-sm rounded-4 p-3">
-<h5 style="color:#F97316;">Moderate</h5>
-<h2>3</h2>
+<div class="col-md-3 mb-3">
+<div class="card summary-card p-3">
+<h6 class="text-muted">Pending</h6>
+<h2 id="pendingCount" class="text-warning">0</h2>
 </div>
 </div>
 
-<div class="col-md-3">
-<div class="card border-0 shadow-sm rounded-4 p-3">
-<h5 class="text-danger">Severe</h5>
-<h2>1</h2>
+<div class="col-md-3 mb-3">
+<div class="card summary-card p-3">
+<h6 class="text-muted">Reports</h6>
+<h2 id="reportCount" class="text-primary">0</h2>
 </div>
-</div>
-
 </div>
 
 </div>
 
 </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="js/historytracking.js"></script>
 
 </body>
 </html>

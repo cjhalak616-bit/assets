@@ -135,7 +135,7 @@ Select your preferred clinic, date and time slot to schedule your eye screening.
 
 </div>
 
-<form>
+<form id="bookingForm">
 
 <div class="mb-4">
 <label class="form-label fw-semibold">
@@ -143,12 +143,10 @@ Select your preferred clinic, date and time slot to schedule your eye screening.
  Select Clinic
 </label>
 
-<select class="form-select">
-<option selected disabled>Choose Clinic</option>
-<option>Apollo Hospital</option>
-<option>City Eye Clinic</option>
-<option>Vision Care Centre</option>
+<select id="clinic_id"class="form-select">
+<option value="" selected disabled>Choose Clinic</option>
 </select>
+
 </div>
 
 <div class="row">
@@ -160,7 +158,7 @@ Select your preferred clinic, date and time slot to schedule your eye screening.
  Appointment Date
 </label>
 
-<input type="date"
+<input type="date" id="appointment_date"
 class="form-control">
 
 </div>
@@ -172,7 +170,7 @@ class="form-control">
  Time Slot
 </label>
 
-<input type="time"
+<input type="time" id="appointment_time"
 class="form-control">
 
 </div>
@@ -186,8 +184,8 @@ class="form-control">
  Screening Type
 </label>
 
-<select class="form-select">
-<option selected disabled>Select Screening Type</option>
+<select class="form-select" id="screening_type">
+<option value="" selected disabled>Select Screening Type</option>
 <option>Initial Screening</option>
 <option>Follow-up Screening</option>
 </select>
@@ -201,14 +199,14 @@ class="form-control">
  Additional Notes
 </label>
 
-<textarea
+<textarea id="additional_notes"
 class="form-control"
 rows="4"
 placeholder="Write any special instructions..."></textarea>
 
 </div>
 
-<button class="btn btn-book w-100">
+<button type="submit" class="btn btn-book w-100">
 <i class="bi bi-check-circle-fill"></i>
  Confirm Appointment
 </button>
@@ -228,6 +226,10 @@ placeholder="Write any special instructions..."></textarea>
 </div>
 
 </section>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script src="js/booking.js"></script>
 
 </body>
 </html>
